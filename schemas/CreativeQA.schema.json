@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CreativeQAResult",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "verdict",
+    "evidence_mode",
+    "dimensions",
+    "limitations"
+  ],
+  "properties": {
+    "verdict": {
+      "enum": [
+        "APPROVE",
+        "APPROVE WITH NOTES",
+        "REVISE"
+      ]
+    },
+    "evidence_mode": {
+      "enum": [
+        "storyboard_text",
+        "frame_observed",
+        "sequence_observed",
+        "shot_metadata"
+      ]
+    },
+    "dimensions": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "status",
+          "reason",
+          "evidence_refs",
+          "suggestion"
+        ],
+        "properties": {
+          "name": {
+            "enum": [
+              "visual_coherence",
+              "rhythm",
+              "repetition",
+              "camera_monotony",
+              "visual_escalation",
+              "narrative_clarity",
+              "motif_consistency",
+              "color_progression",
+              "continuity",
+              "shot_redundancy"
+            ]
+          },
+          "status": {
+            "enum": [
+              "pass",
+              "note",
+              "revise",
+              "not_evaluated"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 8000,
+            "pattern": "\\S"
+          },
+          "evidence_refs": {
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 8000,
+              "pattern": "\\S"
+            }
+          },
+          "suggestion": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8000,
+        "pattern": "\\S"
+      }
+    }
+  }
+}

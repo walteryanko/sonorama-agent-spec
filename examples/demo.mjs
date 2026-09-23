@@ -1,0 +1,10 @@
+import {readFile} from 'node:fs/promises';
+import {artifact,validateArtifact,BRIEF_FIELDS,hash,prepareRequest} from '../src/contracts.mjs';
+const scope={org_id:'demo-org',project_id:'synthetic-study',creator_id:'demo-creator'};
+const payload=Object.fromEntries(BRIEF_FIELDS.map(f=>[f,'Synthetic direction for '+f]));
+const source_hash=await hash({fixture:'original synthetic study'});
+const result=await artifact('CreativeBrief',payload,scope,{source_hash});
+await validateArtifact(result,scope);
+const constitution=await readFile(new URL('../CONSTITUTION.md',import.meta.url),'utf8');
+const request=await prepareRequest('analyze_song',scope,{bpm:120,user_notes:'Synthetic instrumental.'},{constitution,source_hash});
+console.log(JSON.stringify({artifact:result,requestStatus:request.status,allowedTools:request.allowed_tools},null,2));

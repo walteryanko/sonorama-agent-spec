@@ -1,0 +1,20 @@
+{
+  "org_id": "demo-org",
+  "project_id": "synthetic-study",
+  "creator_id": "demo-creator",
+  "title": "Synthetic study of rhythm and light",
+  "metrics": {
+    "bpm": 120,
+    "user_notes": "Original fictional exercise; no song or personal data."
+  },
+  "brief": {
+    "core_emotion": "Synthetic direction for core_emotion",
+    "visual_metaphor": "Synthetic direction for visual_metaphor",
+    "camera_language": "Synthetic direction for camera_language",
+    "color_arc": "Synthetic direction for color_arc",
+    "editing_rhythm": "Synthetic direction for editing_rhythm",
+    "motifs": "Synthetic direction for motifs",
+    "do_not": "Synthetic direction for do_not",
+    "hero_moments": "Synthetic direction for hero_moments"
+  }
+}
